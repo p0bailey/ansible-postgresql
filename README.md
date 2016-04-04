@@ -1,4 +1,4 @@
-Role Name
+Postgresql
 =========
 
 This role install Postgresql 9.4 on top of CentOS 6.*.
