@@ -1,0 +1,13 @@
+---
+# handlers file for postgresql-centos6
+- name: restart postgresql
+  sudo: yes
+  service:
+    name: postgresql-9.4
+    state: restarted
+
+- name: reload postgresql
+  sudo: yes
+  service:
+    name: postgresql-9.4
+    state: reloaded

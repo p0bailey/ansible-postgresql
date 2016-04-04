@@ -1,0 +1,13 @@
+---
+
+postgresql_version: 9.4
+# vars to create a DB,user and password.
+dbname: vagrant
+dbuser: vagrant
+dbpassword: vagrant
+#Authorized subnet or ip, in case of signle ip use /32 notation.
+auth_ip: 192.168.56.0/24
+#Defaults
+postgres_home: /var/lib/pgsql/
+postgres_user: postgres
+postgres_group: postgres

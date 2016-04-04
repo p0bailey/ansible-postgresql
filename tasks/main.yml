@@ -1,0 +1,33 @@
+---
+
+- name: Install postgresql 9.4 repo
+  yum: name=http://yum.postgresql.org/9.4/redhat/rhel-6-x86_64/pgdg-centos94-9.4-1.noarch.rpm state=installed
+  when: postgresql_version == 9.4
+
+- name: install the latest version of Postgresql
+  yum: name=postgresql94-server state=latest
+  when: postgresql_version == 9.4
+
+- name: install the latest version of python-psycopg2
+  yum: name=python-psycopg2 state=latest
+
+- name: init postgresql database
+  command: service postgresql-{{ postgresql_version }} initdb creates=/var/lib/pgsql/{{ postgresql_version }}/data/postgresql.conf
+  when: ansible_os_family == "RedHat"
+  register: check_pg_db
+
+- service: name=postgresql-{{ postgresql_version }}  state=started
+
+- service: name=postgresql-{{ postgresql_version }} enabled=yes
+
+- template: src=pg_hba.conf.j2 dest=/var/lib/pgsql/{{ postgresql_version }}/data/pg_hba.conf
+  notify: restart postgresql
+
+- template: src=postgresql.conf.master.j2 dest=/var/lib/pgsql/{{ postgresql_version }}/data/postgresql.conf
+  notify: restart postgresql
+
+- include: setup_databases.yml
+  when: check_pg_db|changed
+
+- include: setup_users.yml
+  when: check_pg_db|changed

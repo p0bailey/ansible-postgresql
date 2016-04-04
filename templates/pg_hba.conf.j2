@@ -1,0 +1,4 @@
+local   all            postgres              peer
+local   all            all                   peer
+host    all            all                   127.0.0.1/0        md5
+host    {{ dbname }}    {{ dbuser }}        {{ auth_ip }}         md5

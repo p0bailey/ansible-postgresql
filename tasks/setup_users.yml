@@ -1,0 +1,14 @@
+---
+- name: ensure user has access to database
+  postgresql_user: db={{ dbname }} name={{ dbuser }} password={{ dbpassword }} priv=ALL
+  sudo: yes
+  sudo_user: postgres
+
+- postgresql_privs: >
+     db=postgres
+     privs=ALL
+     type=database
+     obj={{dbname}}
+     role={{dbuser}}
+  sudo: yes
+  sudo_user: postgres

@@ -1,0 +1,5 @@
+---
+- name: ensure database is created
+  postgresql_db: name={{ dbname }}
+  sudo: yes
+  sudo_user: postgres
