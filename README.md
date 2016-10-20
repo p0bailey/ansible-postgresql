@@ -25,7 +25,7 @@ dbuser: vagrant #change this!
 dbpassword: vagrant #change this to a strong one!
 ```
 
-##Authorized subnet or ip, in case of signle ip use /32 notation.
+##Authorized subnet or IP; in case of single IP use /32 notation.
 
 ```
 auth_ip: 192.168.56.0/24
@@ -58,7 +58,7 @@ vars:
     dbname: vagrant #change this!
     dbuser: vagrant #change this!
     dbpassword: vagrant #change this!
-    #Authorized subnet or ip, in case of signle ip use /32 notation.
+    #Authorized subnet or IP; in case of single IP use /32 notation.
     auth_ip: 192.168.56.0/24
     #Defaults
     postgres_home: /var/lib/pgsql/
